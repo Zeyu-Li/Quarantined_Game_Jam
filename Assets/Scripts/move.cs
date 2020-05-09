@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Xml.Schema;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,20 @@ using UnityEngine;
 public class move : MonoBehaviour
 {
 
+
+
+
     public Camera camera;
     public CharacterController controller;
+
+    [Header("Character")]
+    public float drunkFactor;
+    public float lagTime;
+
+    float desiredX;
+    float desiredY;
+    float currentX;
+    float currentY;
 
     [Header("ground movement")]
     public float maxGroundVel = 14f; //units/s
@@ -28,7 +41,8 @@ public class move : MonoBehaviour
     public float jumpHeight = 10;
     public float timeToApex = 1; //time taken to reach apex of jump
 
-
+    private float tempX;
+    private float tempY;
     public Vector3 velocity = Vector3.zero;
 
     // Use this for initialization
@@ -40,16 +54,30 @@ public class move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         groundCheck();
+        updateMove();
+        updateNumbers();
+
+    }
+
+
+
+    void updateMove()
+    {
         transform.rotation = Quaternion.Euler(0, camera.GetComponent<playerCamera>().xCurrentRotation, 0);
         //move before updating velocity!
         controller.Move(velocity * Time.deltaTime);
 
         //current input
-        float x = Input.GetAxisRaw("Horizontal");
-        float z = Input.GetAxisRaw("Vertical");
+        desiredX = Input.GetAxisRaw("Horizontal");
+        desiredY = Input.GetAxisRaw("Vertical");
 
-        Vector3 cInput = (new Vector3(x, 0, z)).normalized;
+        currentX = Mathf.SmoothDamp(currentX, desiredX, ref tempX, lagTime);
+        currentY = Mathf.SmoothDamp(currentY, desiredY, ref tempY, lagTime);
+
+
+        Vector3 cInput = (new Vector3(currentX, 0, currentY)).normalized;
         //rotating the current input to align wiht camera
         cInput = transform.rotation * cInput;
 
@@ -68,10 +96,7 @@ public class move : MonoBehaviour
         {
             velocity.y += gravity * Time.deltaTime;
         }
-        updateNumbers();
-
     }
-
     void updateNumbers()
     {
         gravity = -2 * jumpHeight / (timeToApex * timeToApex);
