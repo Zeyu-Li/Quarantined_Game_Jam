@@ -77,6 +77,9 @@ MonoBehaviour:
   jump: 0.3
   isSliding: 0
   slopeLimit: 35
+  footsteps: []
+  volume: 0.5
+  listener: {fileID: 0}
 --- !u!1 &837443226061319623
 GameObject:
   m_ObjectHideFlags: 0

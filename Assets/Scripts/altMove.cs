@@ -26,17 +26,36 @@ public class altMove : MonoBehaviour {
     public float slopeLimit = 35f;
     private Vector3 slopeParallel;
 
+    // sound
+    public AudioClip[] footsteps;
+    public float volume = .5f;
+    public AudioSource listener;
+    private int index;
+    private float counter = 0;
+
+    private void Start() {
+        listener = GetComponent<AudioSource>();
+    }
+
     // Update is called once per frame
     void Update() {
         // is grounded calculations
         isGrounded = Physics.CheckSphere(groundCheck.position, checkRadius, ground);
 
-        if (isGrounded) {
-            velocity.y = -2f;
-        }
-
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+
+        if (isGrounded) {
+            velocity.y = -2f;
+            // plays walk sound
+            if (counter <= 0 && (x != 0f || z != 0f)) {
+                index = Random.Range(0, footsteps.Length);
+                counter = footsteps[index].length;
+                listener.PlayOneShot(footsteps[index], volume);
+            }
+            counter -= Time.deltaTime;
+        }
+
 
         Vector3 move = transform.right * x + transform.forward * z;
 
