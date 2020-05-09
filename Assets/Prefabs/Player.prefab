@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 6033342403103471848}
-  movementSpeed: 3
+  movementSpeed: 2
   gravity: -10
   groundCheck: {fileID: 6033342404178300105}
   checkRadius: 0.12
