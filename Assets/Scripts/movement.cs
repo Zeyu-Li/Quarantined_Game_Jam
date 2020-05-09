@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class altMove : MonoBehaviour {
+public class movement : MonoBehaviour {
     public CharacterController controller;
 
     public float movementSpeed = 14f;

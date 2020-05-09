@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-public class playerCamera : MonoBehaviour
+public class altCamera : MonoBehaviour
 {
     // Start is called before the first frame update
     public float xSensitivity;
@@ -74,8 +74,8 @@ public class playerCamera : MonoBehaviour
 
     void headBob()
     {
-        if (transform.parent.GetComponent<move>().velocity.magnitude > 0.1f
-        && transform.parent.GetComponent<move>().isGrounded)
+        if (transform.parent.GetComponent<altMovement>().velocity.magnitude > 0.1f
+        && transform.parent.GetComponent<altMovement>().isGrounded)
         {
             bobTimer += bobSpeed * Time.deltaTime;
             Vector3 newPos = new Vector3(
