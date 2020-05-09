@@ -10,7 +10,7 @@ public class move : MonoBehaviour
     public Camera camera;
     public CharacterController controller;
 
-    playerCamera cameraScript;
+    altCamera cameraScript;
 
     [Header("Character")]
     [Range(0, 1)]
@@ -49,7 +49,7 @@ public class move : MonoBehaviour
     void Start()
     {
         updateNumbers();
-        cameraScript = transform.GetChild(0).GetComponent<playerCamera>();
+        cameraScript = transform.GetChild(0).GetComponent<altCamera>();
     }
 
     // Update is called once per frame
@@ -75,7 +75,7 @@ public class move : MonoBehaviour
     }
     void updateMove()
     {
-        transform.rotation = Quaternion.Euler(0, camera.GetComponent<playerCamera>().xCurrentRotation, 0);
+        transform.rotation = Quaternion.Euler(0, camera.GetComponent<altCamera>().xCurrentRotation, 0);
         //move before updating velocity!
         controller.Move(velocity * Time.deltaTime);
 
