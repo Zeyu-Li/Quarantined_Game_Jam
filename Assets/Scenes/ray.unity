@@ -214,8 +214,8 @@ Transform:
   m_LocalPosition: {x: -4.9248796, y: 0.8, z: -6.12068}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2004965255}
   - {fileID: 720135906}
+  - {fileID: 2004965255}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -235,8 +235,12 @@ MonoBehaviour:
   controller: {fileID: 219091869}
   drunkFactor: 0
   lagTime: 0.1
+  desiredX: 0
+  desiredY: 0
+  currentX: 0
+  currentY: 0
   maxGroundVel: 8
-  timeToMaxVel: 4
+  timeToMaxVel: 0.2
   groundAccel: 1
   groundFric: 1
   groundCheckLoc: {fileID: 2004965255}
@@ -350,7 +354,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 219091867}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &720135907
 MonoBehaviour:
@@ -367,13 +371,19 @@ MonoBehaviour:
   xSensitivity: 7
   ySensitivity: 5
   yCurrentRotation: 0
-  smoothTime: 1
+  smoothTime: 0.03
   xCurrentRotation: 0
   yMin: -80
   yMax: 80
   tumbleAngle: 0
   tumbleFactor: 0
   targetTumble: 0
+  tumbleTime: 2
+  restPos: {x: 0, y: 0, z: 0}
+  transitionSpeed: 5
+  bobSpeed: 5
+  bobAmount: 0.5
+  bobTimer: 1.5707964
 --- !u!1001 &854584214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -632,7 +642,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 219091867}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &238438009178611696
 PrefabInstance:

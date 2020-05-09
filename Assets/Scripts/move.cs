@@ -13,14 +13,17 @@ public class move : MonoBehaviour
     public Camera camera;
     public CharacterController controller;
 
+    playerCamera cameraScript;
+
     [Header("Character")]
+    [Range(0, 1)]
     public float drunkFactor;
     public float lagTime;
 
-    float desiredX;
-    float desiredY;
-    float currentX;
-    float currentY;
+    public float desiredX;
+    public float desiredY;
+    public float currentX;
+    public float currentY;
 
     [Header("ground movement")]
     public float maxGroundVel = 14f; //units/s
@@ -49,6 +52,7 @@ public class move : MonoBehaviour
     void Start()
     {
         updateNumbers();
+        cameraScript = transform.GetChild(0).GetComponent<playerCamera>();
     }
 
     // Update is called once per frame
@@ -58,11 +62,20 @@ public class move : MonoBehaviour
         groundCheck();
         updateMove();
         updateNumbers();
-
+        updateDrunkness();
     }
 
 
+    void updateDrunkness()
+    {
+        lagTime = Mathf.Lerp(0, 0.1f, drunkFactor);
+        maxGroundVel = Mathf.Lerp(8, 4, drunkFactor);
+        timeToMaxVel = Mathf.Lerp(0.3f, 3, drunkFactor);
+        cameraScript.bobAmount = Mathf.Lerp(0.2f, 0.5f, drunkFactor);
+        cameraScript.tumbleFactor = Mathf.Lerp(0, 30, drunkFactor);
+        cameraScript.smoothTime = Mathf.Lerp(0.05f, 1.5f, drunkFactor);
 
+    }
     void updateMove()
     {
         transform.rotation = Quaternion.Euler(0, camera.GetComponent<playerCamera>().xCurrentRotation, 0);
