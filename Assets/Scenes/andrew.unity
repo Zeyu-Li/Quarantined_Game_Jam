@@ -787,7 +787,7 @@ PrefabInstance:
     - target: {fileID: 1842758754700417573, guid: 0efc3427ba275b0408fa4e0b9348841e,
         type: 3}
       propertyPath: m_Name
-      value: Gobal
+      value: Spinny Boi
       objectReference: {fileID: 0}
     - target: {fileID: 3739279148601169122, guid: 0efc3427ba275b0408fa4e0b9348841e,
         type: 3}
