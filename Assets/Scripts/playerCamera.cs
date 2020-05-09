@@ -41,7 +41,8 @@ public class playerCamera : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         camPos = transform.localPosition;
     }
 
@@ -49,11 +50,11 @@ public class playerCamera : MonoBehaviour
     void Update()
     {
 
-        Cursor.visible = false;
 
 
-        xRotation += Input.GetAxis("Mouse X") * xSensitivity;
-        yRotation += -Input.GetAxis("Mouse Y") * ySensitivity;
+
+        xRotation += Input.GetAxis("Mouse X") * xSensitivity * Time.deltaTime;
+        yRotation += -Input.GetAxis("Mouse Y") * ySensitivity * Time.deltaTime;
         yRotation = Mathf.Clamp(yRotation, yMin, yMax);
         yCurrentRotation = Mathf.SmoothDamp(yCurrentRotation, yRotation, ref yRotationV, smoothTime);
         xCurrentRotation = Mathf.SmoothDamp(xCurrentRotation, xRotation, ref xRotationV, smoothTime);

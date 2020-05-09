@@ -368,8 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8adea2d538e4a42aa578a1cc74b1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSensitivity: 7
-  ySensitivity: 5
+  xSensitivity: 400
+  ySensitivity: 180
   yCurrentRotation: 0
   smoothTime: 0.03
   xCurrentRotation: 0
