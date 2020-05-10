@@ -12,6 +12,9 @@ public class quitToMenu : MonoBehaviour
         {
 
             SceneManager.LoadScene("title");
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
         }
     }
 }
