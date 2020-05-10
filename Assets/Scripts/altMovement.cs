@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class altMovement : MonoBehaviour
 {
-    public Camera camera;
+    public Camera camera1;
     public CharacterController controller;
 
     altCamera cameraScript;
@@ -74,7 +74,7 @@ public class altMovement : MonoBehaviour
     }
     void updateMove()
     {
-        transform.rotation = Quaternion.Euler(0, camera.GetComponent<altCamera>().xCurrentRotation, 0);
+        transform.rotation = Quaternion.Euler(0, camera1.GetComponent<altCamera>().xCurrentRotation, 0);
         //move before updating velocity!
         controller.Move(velocity * Time.deltaTime);
 

@@ -4,10 +4,7 @@ using UnityEngine;
 public class move : MonoBehaviour
 {
 
-
-
-
-    public Camera camera;
+    public Camera camera1;
     public CharacterController controller;
 
     altCamera cameraScript;
@@ -75,7 +72,7 @@ public class move : MonoBehaviour
     }
     void updateMove()
     {
-        transform.rotation = Quaternion.Euler(0, camera.GetComponent<altCamera>().xCurrentRotation, 0);
+        transform.rotation = Quaternion.Euler(0, camera1.GetComponent<altCamera>().xCurrentRotation, 0);
         //move before updating velocity!
         controller.Move(velocity * Time.deltaTime);
 
@@ -88,7 +85,7 @@ public class move : MonoBehaviour
 
 
         Vector3 cInput = (new Vector3(currentX, 0, currentY)).normalized;
-        //rotating the current input to align wiht camera
+        //rotating the current input to align with camera
         cInput = transform.rotation * cInput;
 
         Vector3 acceleration = (cInput * groundAccel);
