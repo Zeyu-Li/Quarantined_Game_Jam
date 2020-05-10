@@ -9161,7 +9161,6 @@ MonoBehaviour:
   animator: {fileID: 577117404}
   cam: {fileID: 850530177}
   master: {fileID: 1760022136}
-  slider: {fileID: 0}
   confortLevel: 0
   maxConfort: 8
   pickUpDistance: 2

@@ -14,6 +14,7 @@ public class gameMaster : MonoBehaviour
     public bool gameOn = true;
 
     player p;
+
     GameObject enemy;
     GameObject hpBar;
     GameObject gameOverLabel;
@@ -25,10 +26,7 @@ public class gameMaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        hpBar = GameObject.Find("Hp bar");
-        gameOverLabel = GameObject.Find("Game Over Label");
-        halo = GameObject.Find("Halo");
+
         initialize();
     }
 
@@ -49,13 +47,19 @@ public class gameMaster : MonoBehaviour
     }
     public void initialize()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        p = GameObject.FindGameObjectWithTag("Player").GetComponent<player>();
+        hpBar = GameObject.Find("Hp bar");
+        gameOverLabel = GameObject.Find("Game Over Label");
+        halo = GameObject.Find("Halo");
+
         //clean up
         GameObject[] items = GameObject.FindGameObjectsWithTag("Item");
         foreach (var item in items)
         {
             Destroy(item);
         }
-        p = GameObject.FindGameObjectWithTag("Player").GetComponent<player>();
+
         p.confortLevel = (int)(p.maxConfort / 3);
         p.canBeDamaged = true;
         halo.SetActive(false);
@@ -117,14 +121,13 @@ public class gameMaster : MonoBehaviour
 
         if (halo.activeInHierarchy)
         {
-            if (Vector3.Distance(p.transform.position, halo.transform.position) < 1)
+            if (Vector3.Distance(p.transform.position, halo.transform.position) < 0.75f)
             {
                 p.canBeDamaged = false;
                 enemy.SetActive(false);
                 hpBar.SetActive(false);
-
-
-                //win game 
+                Debug.Log("win");
+                SceneManager.LoadScene("end");
             }
         }
     }
