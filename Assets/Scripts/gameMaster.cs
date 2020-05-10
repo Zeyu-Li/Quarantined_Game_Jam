@@ -126,7 +126,7 @@ public class gameMaster : MonoBehaviour
                 p.canBeDamaged = false;
                 enemy.SetActive(false);
                 hpBar.SetActive(false);
-                Debug.Log("win");
+
                 SceneManager.LoadScene("end");
             }
         }
