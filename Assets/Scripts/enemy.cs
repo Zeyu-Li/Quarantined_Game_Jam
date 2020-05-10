@@ -7,16 +7,23 @@ public class enemy : MonoBehaviour
 {
     public Transform target;
     public float hitRadius = 1;
+
+    Transform player;
+    NavMeshAgent agent;
+    gameMaster master;
     // Start is called before the first frame update
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindWithTag("Player").transform;
+        master = GameObject.Find("GameMaster").GetComponent<gameMaster>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetComponent<NavMeshAgent>().SetDestination(target.position);
+        agent.SetDestination(target.position);
 
         RaycastHit hit;
 
@@ -33,9 +40,14 @@ public class enemy : MonoBehaviour
 
     public IEnumerator pauseChasing()
     {
-        GetComponent<NavMeshAgent>().isStopped = true;
-        yield return new WaitForSeconds(2);
-        GetComponent<NavMeshAgent>().isStopped = false;
+        agent.isStopped = true;
+        yield return new WaitForSeconds(1);
+        agent.isStopped = false;
+        target = master.pickUpLocations[Random.Range(0, master.pickUpLocations.Count)];
+        yield return new WaitForSeconds(4);
+        target = player;
+
+
     }
 
 

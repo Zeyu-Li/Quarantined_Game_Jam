@@ -110,7 +110,11 @@ public class gameMaster : MonoBehaviour
             if (Vector3.Distance(p.transform.position, halo.transform.position) < 1)
             {
                 p.canBeDamaged = false;
-                //win game here
+                enemy.SetActive(false);
+                hpBar.SetActive(false);
+
+
+                //win game 
             }
         }
     }
