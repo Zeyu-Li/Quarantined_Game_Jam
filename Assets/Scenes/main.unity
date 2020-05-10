@@ -9319,6 +9319,7 @@ MonoBehaviour:
   - {fileID: 1051939858}
   itemsToSpawn:
   - {fileID: 1842758754700417573, guid: 0efc3427ba275b0408fa4e0b9348841e, type: 3}
+  - {fileID: 7825747963442643095, guid: 87d5c23930e9f1b448ad5cb7008b1cf1, type: 3}
   enemyPrefab: {fileID: 5940953859700234364, guid: 6729ea0aaee3e854faf398cf58ef629e,
     type: 3}
   candyPrefab: {fileID: 3209024156548383636, guid: de46e4fc3da4a464c91e562894a4e818,
