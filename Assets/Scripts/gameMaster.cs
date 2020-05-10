@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
+using UnityEngine.SceneManagement;
 public class gameMaster : MonoBehaviour
 {
     public Transform spawnLocation;
@@ -30,13 +30,22 @@ public class gameMaster : MonoBehaviour
         gameOverLabel = GameObject.Find("Game Over Label");
         halo = GameObject.Find("Halo");
         initialize();
-
     }
 
     // Update is called once per frame
     void Update()
     {
         checkWinGame();
+        if (gameOn == false)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                initialize();
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                SceneManager.LoadScene("title");
+            }
+        }
     }
     public void initialize()
     {
@@ -95,6 +104,7 @@ public class gameMaster : MonoBehaviour
     {
         gameOverLabel.SetActive(true);
         hpBar.SetActive(false);
+        gameOn = false;
     }
 
     public void checkWinGame()

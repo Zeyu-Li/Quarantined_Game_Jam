@@ -33,9 +33,6 @@ public class player : MonoBehaviour
         if (master.gameOn)
         {
 
-
-
-
             slider.value = confortLevel / maxConfort;
         }
     }
