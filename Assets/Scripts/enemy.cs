@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class enemy : MonoBehaviour
 {
     public Transform target;
+    public float hitRadius = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class enemy : MonoBehaviour
 
         if (Physics.Raycast(transform.position, target.position - transform.position, out hit))
         {
-            if (hit.distance < 0.5f)
+            if (hit.distance < hitRadius)
                 if (hit.collider.gameObject.tag == "Player")
                 {
                     hit.collider.gameObject.GetComponent<player>().takeDamage();
