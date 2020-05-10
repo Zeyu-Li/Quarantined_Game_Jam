@@ -16,7 +16,11 @@ public class enemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player").transform;
-        master = GameObject.Find("GameMaster").GetComponent<gameMaster>();
+        GameObject temp = GameObject.Find("GameMaster");
+        if (temp != null)
+        {
+            master = temp.GetComponent<gameMaster>();
+        }
 
     }
 
