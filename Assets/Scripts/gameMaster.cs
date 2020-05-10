@@ -18,17 +18,17 @@ public class gameMaster : MonoBehaviour
     GameObject hpBar;
     GameObject gameOverLabel;
 
+    GameObject halo;
     int numberOfItems;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
         Cursor.lockState = CursorLockMode.Locked;
-
         hpBar = GameObject.Find("Hp bar");
         gameOverLabel = GameObject.Find("Game Over Label");
+        halo = GameObject.Find("Halo");
         initialize();
 
     }
@@ -36,7 +36,7 @@ public class gameMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        checkWinGame();
     }
     public void initialize()
     {
@@ -47,15 +47,14 @@ public class gameMaster : MonoBehaviour
             Destroy(item);
         }
         p = GameObject.FindGameObjectWithTag("Player").GetComponent<player>();
-        p.confortLevel = (int)(p.maxConfort / 2);
+        p.confortLevel = (int)(p.maxConfort / 3);
         p.canBeDamaged = true;
-
+        halo.SetActive(false);
         gameOverLabel.SetActive(false);
         hpBar.SetActive(true);
         numberOfItems = 0;
         spawnEnemy();
         spawnNewItem();
-
     }
 
     public void spawnCandy()
@@ -82,10 +81,14 @@ public class gameMaster : MonoBehaviour
         spawnNewItem();
         Transform rngTransform = pickUpLocations[Random.Range(0, pickUpLocations.Count)];
         StartCoroutine(enemy.GetComponent<enemy>().pauseChasing());
+
+
         if (numberOfItems % 4 == 0)
         {
             spawnCandy();
         }
+
+
 
     }
     public void gameOver()
@@ -94,5 +97,21 @@ public class gameMaster : MonoBehaviour
         hpBar.SetActive(false);
     }
 
+    public void checkWinGame()
+    {
+        if (p.confortLevel == p.maxConfort)
+        {
+            halo.SetActive(true);
+        }
 
+
+        if (halo.activeInHierarchy)
+        {
+            if (Vector3.Distance(p.transform.position, halo.transform.position) < 1)
+            {
+                p.canBeDamaged = false;
+                //win game here
+            }
+        }
+    }
 }
