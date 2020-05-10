@@ -10,7 +10,6 @@ public class delete : MonoBehaviour {
         objs = GameObject.FindGameObjectWithTag("Music");
 
         try {
-            Debug.Log(objs);
             Destroy(objs);
         } catch {
             ;
