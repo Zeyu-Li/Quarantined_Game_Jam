@@ -15790,6 +15790,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ambSounds
       objectReference: {fileID: 0}
+    - target: {fileID: 6432478531574729995, guid: 5d3139a422ca8e3418976f10ec5b77f8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d3139a422ca8e3418976f10ec5b77f8, type: 3}
 --- !u!4 &6436067482546404486

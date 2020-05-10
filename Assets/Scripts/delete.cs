@@ -2,21 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class delete : MonoBehaviour
-{
+public class delete : MonoBehaviour {
     GameObject objs;
     // Start is called before the first frame update
     void Start()
     {
         objs = GameObject.FindGameObjectWithTag("Music");
 
-        try
-        {
-
+        try {
             Destroy(objs);
-        }
-        catch
-        {
+        } catch {
             ;
         }
     }

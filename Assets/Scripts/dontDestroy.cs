@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class dontDestroy : MonoBehaviour {
-    private bool a = false;
     // Start is called before the first frame update
     void Awake() {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Music");
