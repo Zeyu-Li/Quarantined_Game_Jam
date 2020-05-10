@@ -5,17 +5,22 @@ using UnityEngine.AI;
 
 public class gameMaster : MonoBehaviour
 {
-
+    public Transform spawnLocation;
 
     public List<Transform> pickUpLocations;
     public List<GameObject> itemsToSpawn;
     public GameObject enemyPrefab;
+    public GameObject candyPrefab;
     public bool gameOn = true;
 
     player p;
     GameObject enemy;
     GameObject hpBar;
     GameObject gameOverLabel;
+
+    int numberOfItems;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,9 +30,6 @@ public class gameMaster : MonoBehaviour
         hpBar = GameObject.Find("Hp bar");
         gameOverLabel = GameObject.Find("Game Over Label");
         initialize();
-
-
-
 
     }
 
@@ -45,15 +47,20 @@ public class gameMaster : MonoBehaviour
             Destroy(item);
         }
         p = GameObject.FindGameObjectWithTag("Player").GetComponent<player>();
-        p.confortLevel = p.maxConfort;
+        p.confortLevel = (int)(p.maxConfort / 2);
         p.canBeDamaged = true;
 
         gameOverLabel.SetActive(false);
         hpBar.SetActive(true);
-
+        numberOfItems = 0;
         spawnEnemy();
         spawnNewItem();
 
+    }
+
+    public void spawnCandy()
+    {
+        Instantiate(candyPrefab, spawnLocation.position, spawnLocation.rotation);
     }
 
     public void spawnNewItem()
@@ -71,9 +78,15 @@ public class gameMaster : MonoBehaviour
     }
     public void itemPickedUp()
     {
+        numberOfItems++;
         spawnNewItem();
         Transform rngTransform = pickUpLocations[Random.Range(0, pickUpLocations.Count)];
         StartCoroutine(enemy.GetComponent<enemy>().pauseChasing());
+        if (numberOfItems % 4 == 0)
+        {
+            spawnCandy();
+        }
+
     }
     public void gameOver()
     {

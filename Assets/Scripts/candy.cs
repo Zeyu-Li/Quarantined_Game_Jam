@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class candy : MonoBehaviour {
-    
+public class candy : MonoBehaviour
+{
+
     public GameObject child;
     public bool ate = false;
     public float timeLimit = 40f;
@@ -15,23 +16,27 @@ public class candy : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
-        
+        move = GameObject.FindWithTag("Player").GetComponent<movement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (ate) {
+        if (ate)
+        {
             timeLimit -= Time.deltaTime;
-            if (timeLimit < 0) {
+            if (timeLimit < 0)
+            {
                 ate = false;
                 timeLimit = 40f;
                 move.movementSpeed -= speedChange;
             }
         }
     }
-    private void OnTriggerEnter(Collider collision) {
-        if (collision.gameObject.CompareTag("Player")) {
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
             child.SetActive(false);
             ate = true;
             move.movementSpeed += speedChange;

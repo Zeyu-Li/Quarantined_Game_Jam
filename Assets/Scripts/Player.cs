@@ -33,26 +33,9 @@ public class player : MonoBehaviour
         if (master.gameOn)
         {
 
-            RaycastHit hit;
-            Debug.DrawRay(cam.transform.position, cam.transform.forward, Color.red, 0.05f);
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickUpDistance))
-            {
 
-                if (hit.collider.gameObject.tag == "Item")
-                {
-                    Debug.Log(hit.collider.gameObject.tag);
 
-                    if (Input.GetKey(KeyCode.F))
-                    {
-                        if (confortLevel < maxConfort)
-                        {
-                            confortLevel++;
-                        }
-                        GameObject.Destroy(hit.collider.gameObject);
-                        master.itemPickedUp();
-                    }
-                }
-            }
+
             slider.value = confortLevel / maxConfort;
         }
     }
@@ -62,7 +45,7 @@ public class player : MonoBehaviour
         if (canBeDamaged)
         {
             confortLevel--;
-            if (confortLevel < 0)
+            if (confortLevel <= 0)
             {
                 master.gameOver();
             }
@@ -73,6 +56,24 @@ public class player : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// OnTriggerEnter is called when the Collider other enters the trigger.
+    /// </summary>
+    /// <param name="other">The other Collider involved in this collision.</param>
+    void OnTriggerEnter(Collider other)
+    {
+
+        if (other.transform.tag == "Item")
+        {
+            if (confortLevel < maxConfort)
+            {
+                confortLevel++;
+            }
+            GameObject.Destroy(other.gameObject);
+            master.itemPickedUp();
+        }
+
+    }
 
 
     private IEnumerator waitThree()
