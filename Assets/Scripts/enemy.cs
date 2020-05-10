@@ -23,18 +23,21 @@ public class enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(target.position);
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, target.position - transform.position, out hit))
+        if (master != null || target != null)
         {
-            if (hit.distance < hitRadius)
-                if (hit.collider.gameObject.tag == "Player")
-                {
-                    hit.collider.gameObject.GetComponent<player>().takeDamage();
-                    StartCoroutine(pauseChasing());
-                }
+            agent.SetDestination(target.position);
+
+            RaycastHit hit;
+
+            if (Physics.Raycast(transform.position, target.position - transform.position, out hit))
+            {
+                if (hit.distance < hitRadius)
+                    if (hit.collider.gameObject.tag == "Player")
+                    {
+                        hit.collider.gameObject.GetComponent<player>().takeDamage();
+                        StartCoroutine(pauseChasing());
+                    }
+            }
         }
     }
 
