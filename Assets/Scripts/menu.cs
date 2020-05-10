@@ -8,7 +8,7 @@ public class menu : MonoBehaviour
     // Start is called before the first frame update
     public void play() {
         Cursor.visible = false;
-        SceneManager.LoadScene("main");
+        SceneManager.LoadScene("instructions");
     }
 
     public void quit() {
