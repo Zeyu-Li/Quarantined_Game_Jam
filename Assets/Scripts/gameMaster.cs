@@ -59,13 +59,8 @@ public class gameMaster : MonoBehaviour
         {
             Destroy(item);
         }
-<<<<<<< HEAD
         p = GameObject.FindGameObjectWithTag("Player").GetComponent<player>();
         p.confortLevel = 3;
-=======
-
-        p.confortLevel = (int)(p.maxConfort / 3);
->>>>>>> 5bafd2baad75e6275829934a7b31118e2701ec7a
         p.canBeDamaged = true;
         halo.SetActive(false);
         gameOverLabel.SetActive(false);
