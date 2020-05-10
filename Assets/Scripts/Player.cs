@@ -34,6 +34,7 @@ public class player : MonoBehaviour
         {
 
             RaycastHit hit;
+            Debug.DrawRay(cam.transform.position, cam.transform.forward, Color.red, 0.05f);
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickUpDistance))
             {
 
