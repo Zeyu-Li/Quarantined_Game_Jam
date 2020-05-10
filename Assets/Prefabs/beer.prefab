@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 54698935483890838}
   m_Layer: 0
   m_Name: beer (1)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 5110734071520120400}
   m_Layer: 0
   m_Name: beer
-  m_TagString: Item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
