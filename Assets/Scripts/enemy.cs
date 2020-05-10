@@ -11,6 +11,7 @@ public class enemy : MonoBehaviour
     Transform player;
     NavMeshAgent agent;
     gameMaster master;
+    bool fleeing;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,8 +37,9 @@ public class enemy : MonoBehaviour
             if (Physics.Raycast(transform.position, target.position - transform.position, out hit))
             {
                 if (hit.distance < hitRadius)
-                    if (hit.collider.gameObject.tag == "Player")
+                    if (hit.collider.gameObject.tag == "Player" && !fleeing)
                     {
+                        GetComponent<AudioSource>().Play();
                         hit.collider.gameObject.GetComponent<player>().takeDamage();
                         StartCoroutine(pauseChasing());
                     }
@@ -47,14 +49,14 @@ public class enemy : MonoBehaviour
 
     public IEnumerator pauseChasing()
     {
+        fleeing = true;
         agent.isStopped = true;
         yield return new WaitForSeconds(1);
         agent.isStopped = false;
         target = master.pickUpLocations[Random.Range(0, master.pickUpLocations.Count)];
         yield return new WaitForSeconds(4);
         target = player;
-
-
+        fleeing = false;
     }
 
 
