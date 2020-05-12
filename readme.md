@@ -52,4 +52,4 @@ Download Full Desktop Version [here](https://github.com/Zeyu-Li/Quarantined_Game
 
 - Andrew - modeling, design, sound, music, coding
 
-- Ray - AI, coding
+- [Ray](https://github.com/goldentoaste) - AI, coding
