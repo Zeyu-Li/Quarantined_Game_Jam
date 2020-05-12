@@ -4,6 +4,12 @@
 
 Trapped in your house and in your mind, you have nothing but **disappear**. Fortunately, there is **alcohol** in the house to smooth the pain and provide solace, just don't tell mom about it. 
 
+# Play
+
+This is a online version found [here](https://itch.io/embed-upload/2251772?color=fe5e5e)
+
+Download Full Desktop Version [here](https://github.com/Zeyu-Li/Quarantined_Game_Jam/releases/tag/v1.1)
+
 
 
 ## Controls
@@ -36,7 +42,9 @@ Go around the house and collect alcohol to smooth the pain but beware of ghosts.
 
 ## Demo
 
-Demo in the projects tab in [GitHub]()
+This is a online version found [here](https://itch.io/embed-upload/2251772?color=fe5e5e)
+
+Download Full Desktop Version [here](https://github.com/Zeyu-Li/Quarantined_Game_Jam/releases/tag/v1.1)
 
 
 
